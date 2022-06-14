@@ -50,6 +50,9 @@ JULRpp = "hour_i_icA_TW_icW_TW_lag_time_cat_n_gram_postcA_postcW_ppe_precA_" \
     + "precW_prev_resp_time_cat_rc_rpfa_F_rpfa_R_rt_s_scA_TW_scW_TW_sm_tcA_TW_" \
     + "tcW_TW_user_avg_correct"
 
+XNLR = "i_icA_icA_TW_icW_icW_TW_n_gram_tcA_tcA_TW_tcW_tcW_TW"
+XNLRp = "bundle_i_icA_icA_TW_icW_icW_TW_n_gram_tcA_tcA_TW_tcW_tcW_TW_user_avg_correct"
+
 LRP = "i_icA_TW_icW_TW_n_gram_s_scA_TW_scW_TW_tcA_TW_tcW_TW_user_avg_correct"
 
 TWC = "TW combined counts"
@@ -191,7 +194,9 @@ EXP_NAMES = {
     LRP: "LRP",
     EDLRp: "EDLR+",
     EDLRp_nlag: "EDLR+ no lag",
-    EDLRpp: "EDLR+New"
+    EDLRpp: "EDLR+New",
+    XNLR: "XNLR",
+    XNLRp: "XNLR+"
 }
 
 

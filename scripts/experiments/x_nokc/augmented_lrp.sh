@@ -13,10 +13,11 @@ SPLITS=5
 
 cmd=""
 
-XNLR="-i
+XNLRp="-i
       -icA -icW -tcA -tcW \
-      -icA_TW -icW_TW -tcA_TW -tcW_TW
-      -n_gram"
+      -icA_TW -icW_TW -tcA_TW -tcW_TW \
+      -n_gram \
+      -bundle -user_avg_correct"
 
 for (( i=0; i<$SPLITS; i++ )); do
 #-----------------------------------------------------------
@@ -24,7 +25,7 @@ cmd+="python ./src/training/compute_lr.py \
     --dataset=$DATASET \
     --num_threads=$NTHREADS \
     --split_id=$i \
-    --exp_name=$EXPNAME $XNLR \n"
+    --exp_name=$EXPNAME $XNLRp \n"
 #-----------------------------------------------------------
 done
 

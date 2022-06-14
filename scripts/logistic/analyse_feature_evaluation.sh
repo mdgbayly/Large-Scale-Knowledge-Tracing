@@ -20,10 +20,10 @@
 
 export PYTHONPATH="."
 DATASET="x_nokc"
-EXPNAME="bestlr_feature_evaluation"
+EXPNAME="lr_baselines"
 NSPLITS=5
-BASELINE_ACC="0.86023"
-BASELINE_AUC="0.809854"
+BASELINE_ACC="0.843749"
+BASELINE_AUC="0.5"
 
 
 python ./src/analysis/feature_evaluation.py \
