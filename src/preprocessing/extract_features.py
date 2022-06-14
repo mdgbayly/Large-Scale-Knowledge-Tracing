@@ -32,14 +32,16 @@ RPFA_PARAMS = {
     "elemmath_2021": {"rpfa_F": 0.8, "rpfa_R": 0.8},
     "ednet_kt3": {"rpfa_F": 0.9, "rpfa_R": 1.0},
     "eedi": {"rpfa_F": 0.8, "rpfa_R": 1.0},
-    "junyi_15": {"rpfa_F": 0.9, "rpfa_R": 0.7}
+    "junyi_15": {"rpfa_F": 0.9, "rpfa_R": 0.7},
+    "x_nokc": {"rpfa_F": 0.9, "rpfa_R": 0.7}
 }
 
 PPE_PARAMS = {
     "elemmath_2021": {"ppe_b": 0.01, "ppe_m": 0.028},
     "ednet_kt3": {"ppe_b": 0.01, "ppe_m": 0.02},
     "eedi": {"ppe_b": 0.014, "ppe_m": 0.02},
-    "junyi_15": {"ppe_b": 0.026, "ppe_m": 0.02}
+    "junyi_15": {"ppe_b": 0.026, "ppe_m": 0.02},
+    "x_nokc": {"ppe_b": 0.026, "ppe_m": 0.02}
 }
 
 

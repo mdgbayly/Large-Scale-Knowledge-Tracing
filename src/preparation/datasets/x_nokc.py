@@ -1,0 +1,86 @@
+import os
+import datetime
+import numpy as np
+import pandas as pd
+from scipy import sparse
+from config.constants import DATASET_PATH, MIN_INTERACTIONS_PER_USER
+
+TIME_REGEX = "%Y-%m-%d %H:%M:%S.%f"
+
+
+###############################################################################
+# Set timestamps
+###############################################################################
+def format_unix_time(row):
+    return datetime.datetime.strptime(row['ImputedEventTime'], TIME_REGEX).timestamp()
+
+
+def format_course_id(row):
+    return row['CourseId'][:6]
+
+###############################################################################
+# Prepare dataset
+###############################################################################
+
+def prepare_x_nokc(n_splits):
+
+    print("\nPreparing interaction data")
+    print("-----------------------------------------------")
+    base = DATASET_PATH["x_nokc"]
+    df = pd.read_csv(base + "CS-Question-Results6.csv")
+
+    # Rename standard columns
+    df.rename(columns={
+        "UserId": "user_id",
+        "QuestionId": "item_id",
+        "QuizName": "bundle_id",
+        "IsCorrect": "correct"
+    }, inplace=True)
+
+    # timestamps
+    df['ImputedEventTime'] = df['EventTime']
+    df['ImputedEventTime'].fillna(df['TimeCompleted'], inplace=True)
+    df['ImputedEventTime'].fillna(df['AttemptCompleted'], inplace=True)
+    df['ImputedEventTime'].fillna(df['AttemptStarted'], inplace=True)
+    df['unix_time'] = df.apply(format_unix_time, axis=1)
+    df['timestamp'] = df['unix_time'] - np.min(df['unix_time'])
+
+    # Use first 5 digits of CourseId as course_id to group different presentations of course together
+    df['course_id'] = df.apply(format_course_id, axis=1)
+
+    # Some of the feature extraction modules check for nan in the pre-processed data so
+    # remove some of the time columns that contain nan that we have now replaced with
+    # the imputed timestamps
+    df['Score'].fillna(0)
+    df.dropna(axis=1, inplace=True)
+
+    print("Checking consistency...")
+    assert df.isnull().sum().sum() == 0, \
+        "Error, found NaN values in the preprocessed data."
+
+    print(df.head())
+
+    print("Storing interaction data")
+    print("------------------------------------------------------------------")
+
+    # remove users with too few interactions
+    def f(x): return len(x) >= MIN_INTERACTIONS_PER_USER
+    df = df.groupby("user_id").filter(f)
+    df = df.sort_values(["user_id", "timestamp"])
+    df.reset_index(inplace=True, drop=True)
+
+    # create splits for cross validation
+    from src.preparation.prepare_data import determine_splits
+    determine_splits(df, "x_nokc", n_splits=n_splits)
+
+    # save results
+    pp = os.path.join(DATASET_PATH["x_nokc"], "preparation")
+
+    # We don't have a Q Matrix but the feature extraction modules expect one
+    Q_mat = np.zeros((df.shape[0], 0))
+    Q_mat = sparse.csr_matrix(Q_mat)
+    sparse.save_npz(os.path.join(pp, "q_mat.npz"), Q_mat)
+    df['hashed_skill_id'] = 0
+
+    pp = os.path.join(pp, "preprocessed_data.csv")
+    df.to_csv(pp, sep="\t", index=False)

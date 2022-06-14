@@ -93,8 +93,8 @@
 #                                                                             #
 ###############################################################################
 export PYTHONPATH="."
-DATASET="junyi_15"
-NTHREADS=31
+DATASET="x_nokc"
+NTHREADS=7
 
 # Select features using the flags above
 # features="-i -s -icA -icW -scA -scW -n_gram -user_avg_correct"
@@ -120,8 +120,13 @@ features="-i"
 # For the SAINT+ model time preparation
 #features='-resp_time -resp_time_cat -lag_time -lag_time_cat'
 
-python3 ./src/preprocessing/extract_features.py \
+#python3 ./src/preprocessing/extract_features.py \
+#    --dataset=$DATASET \
+#    --num_threads=$NTHREADS \
+#    -recompute \
+#    $features
+
+python ./src/preprocessing/extract_features.py \
     --dataset=$DATASET \
     --num_threads=$NTHREADS \
-    -recompute \
     $features

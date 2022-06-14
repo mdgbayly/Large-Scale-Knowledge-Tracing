@@ -93,9 +93,9 @@
 #                                                                             #
 ###############################################################################
 export PYTHONPATH="."
-DATASET="elemmath_2021"
-EXPNAME="default"
-NTHREADS=23
+DATASET="x_nokc"
+EXPNAME="lms_i"
+NTHREADS=7
 
 # Select features using the flags above
 # features="-i -s -icA -icW -scA -scW -n_gram -user_avg_correct"

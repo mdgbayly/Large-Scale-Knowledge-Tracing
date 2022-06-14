@@ -12,16 +12,24 @@
 #      - single_feature_evaluation                                            #
 #      - bestlr_feature_evaluation                                            #
 #      - lr_baselines                                                         #
-#    exp_name (int): number of cross-validation splits                        #
+#    n_splits (int): number of cross-validation splits                        #
+#    csv: Output CSV format                                                   #
+#    baseline_acc (float): Baseline accuracy to compare evaluations against   #
+#    baseline_auc (float): Baseline AUC to compare evaluations against        #
 ###############################################################################
 
 export PYTHONPATH="."
-DATASET="elemmath_2021"
-EXPNAME="single_feature_evaluation"
+DATASET="x_nokc"
+EXPNAME="bestlr_feature_evaluation"
 NSPLITS=5
+BASELINE_ACC="0.86023"
+BASELINE_AUC="0.809854"
 
 
 python ./src/analysis/feature_evaluation.py \
     --dataset=$DATASET \
     --exp_name=$EXPNAME \
-    --n_splits=$NSPLITS
+    --n_splits=$NSPLITS \
+    --csv \
+    --baseline_acc=$BASELINE_ACC \
+    --baseline_auc=$BASELINE_AUC

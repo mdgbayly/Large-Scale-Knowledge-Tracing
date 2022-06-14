@@ -12,6 +12,7 @@ from src.preparation.datasets.ednet_kt3 import prepare_ednet_kt3
 from src.preparation.datasets.junyi_20 import prepare_junyi_20
 from src.preparation.datasets.junyi_15 import prepare_junyi_15
 from src.preparation.datasets.eedi import prepare_eedi
+from src.preparation.datasets.x_nokc import prepare_x_nokc
 
 
 def determine_splits(interaction_df, dataset, n_splits=5):
@@ -60,6 +61,8 @@ if __name__ == "__main__":
         prepare_junyi_20(args.n_splits)
     elif dataset == "eedi":
         prepare_eedi(args.n_splits)
+    elif dataset == "x_nokc":
+        prepare_x_nokc(args.n_splits)
     else:
         raise ValueError("The provided dataset name is unknown.")
 
