@@ -36,7 +36,10 @@ DATASET_PATH = {
     "junyi_15": "./data/junyi_15/",
     "junyi_20": "./data/junyi_20/",
     "eedi": "./data/eedi/",
-    "x_nokc": "./data/x_nokc/"
+    "x_nokc": "./data/x_nokc/",
+    "x_nokc_hard": "./data/x_nokc_hard/",
+    "x_nokc_014": "./data/x_nokc_014/",
+    "x_kc_014": "./data/x_kc_014/"
 }
 N_SM = {
     "elemmath_2021": 6,

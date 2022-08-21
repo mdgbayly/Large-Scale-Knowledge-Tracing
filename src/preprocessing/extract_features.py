@@ -33,7 +33,10 @@ RPFA_PARAMS = {
     "ednet_kt3": {"rpfa_F": 0.9, "rpfa_R": 1.0},
     "eedi": {"rpfa_F": 0.8, "rpfa_R": 1.0},
     "junyi_15": {"rpfa_F": 0.9, "rpfa_R": 0.7},
-    "x_nokc": {"rpfa_F": 0.9, "rpfa_R": 0.7}
+    "x_nokc": {"rpfa_F": 0.9, "rpfa_R": 0.7},
+    "x_nokc_hard": {"rpfa_F": 0.9, "rpfa_R": 0.7},
+    "x_nokc_014": {"rpfa_F": 0.9, "rpfa_R": 0.7},
+    "x_kc_014": {"rpfa_F": 0.9, "rpfa_R": 0.7}
 }
 
 PPE_PARAMS = {
@@ -41,7 +44,10 @@ PPE_PARAMS = {
     "ednet_kt3": {"ppe_b": 0.01, "ppe_m": 0.02},
     "eedi": {"ppe_b": 0.014, "ppe_m": 0.02},
     "junyi_15": {"ppe_b": 0.026, "ppe_m": 0.02},
-    "x_nokc": {"ppe_b": 0.026, "ppe_m": 0.02}
+    "x_nokc": {"ppe_b": 0.026, "ppe_m": 0.02},
+    "x_nokc_hard": {"ppe_b": 0.026, "ppe_m": 0.02},
+    "x_nokc_014": {"ppe_b": 0.026, "ppe_m": 0.02},
+    "x_kc_014": {"ppe_b": 0.026, "ppe_m": 0.02}
 }
 
 

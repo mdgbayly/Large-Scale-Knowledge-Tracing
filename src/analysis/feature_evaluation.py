@@ -53,6 +53,12 @@ JULRpp = "hour_i_icA_TW_icW_TW_lag_time_cat_n_gram_postcA_postcW_ppe_precA_" \
 XNLR = "i_icA_icA_TW_icW_icW_TW_n_gram_tcA_tcA_TW_tcW_tcW_TW"
 XNLRp = "bundle_i_icA_icA_TW_icW_icW_TW_n_gram_tcA_tcA_TW_tcW_tcW_TW_user_avg_correct"
 
+XKLR = "i_icA_icA_TW_icW_icW_TW_ppe_rpfa_F_rpfa_R_s_scA_scA_TW_scW_scW_TW_tcA_tcA_TW_tcW_tcW_TW"
+XKLR2 = "i_icA_icA_TW_icW_icW_TW_s_scA_scA_TW_scW_scW_TW_tcA_tcA_TW_tcW_tcW_TW"
+XKLR3 = "i_icA_icA_TW_icW_icW_TW_scA_scA_TW_scW_scW_TW_tcA_tcA_TW_tcW_tcW_TW"
+XKLR4 = "i_icA_icA_TW_icW_icW_TW_scA_scW_tcA_tcW"
+XKLR5 = "i_icA_icA_TW_icW_icW_TW_s_scA_scW_tcA_tcW"
+
 LRP = "i_icA_TW_icW_TW_n_gram_s_scA_TW_scW_TW_tcA_TW_tcW_TW_user_avg_correct"
 
 TWC = "TW combined counts"
@@ -114,7 +120,7 @@ EXP_NAMES = {
     "i_s_scA_scW_tcA_tcA_TW_tcW_tcW_TW": "TW total counts",
     "i_tcA_tcA_TW_tcW_tcW_TW": "TW total counts",
     "i_s_scA_scA_TW_scW_scW_TW_tcA_tcW": "TW skill counts",
-    "i_icA_TW_icW_TW_s_scA_scW_tcA_tcW": "TW item counts",
+    "i_icA_TW_icW_TW_s_scA_scW_tcA_tcW": "TW item counts+s",
     "i_icA_TW_icW_TW_tcA_tcW": "TW item counts",
     "i_icA_TW_icW_TW_s_scA_scA_TW_scW_scW_TW_tcA_tcA_TW_tcW_tcW_TW": TWC,
     "i_icA_TW_icW_TW_tcA_tcA_TW_tcW_tcW_TW": TWC,
@@ -196,7 +202,12 @@ EXP_NAMES = {
     EDLRp_nlag: "EDLR+ no lag",
     EDLRpp: "EDLR+New",
     XNLR: "XNLR",
-    XNLRp: "XNLR+"
+    XNLRp: "XNLR+",
+    XKLR: "XKLR",
+    XKLR2: "XKLR2",
+    XKLR3: "XKLR3",
+    XKLR4: "XKLR4",
+    XKLR5: "XKLR5"
 }
 
 

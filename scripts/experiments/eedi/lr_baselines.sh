@@ -11,7 +11,6 @@ NPROCESSES=8
 NTHREADS=3
 SPLITS=5
 
-
 IRT="-i"
 PFA="-s -scA -scW"
 RPFA="-s -rpfa_F -rpfa_R"

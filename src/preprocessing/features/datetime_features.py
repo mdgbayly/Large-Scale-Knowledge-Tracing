@@ -52,6 +52,12 @@ def extract_datetime(df, name):
         return pd.to_datetime(df['unix_time'], unit='s')
     elif name == "x_nokc":
         return pd.to_datetime(df['unix_time'], unit='s')
+    elif name == "x_nokc_hard":
+        return pd.to_datetime(df['unix_time'], unit='s')
+    elif name == "x_nokc_014":
+        return pd.to_datetime(df['unix_time'], unit='s')
+    elif name == "x_kc_014":
+        return pd.to_datetime(df['unix_time'], unit='s')
     else:
         raise ValueError("Dataset is not supported: " + name)
 

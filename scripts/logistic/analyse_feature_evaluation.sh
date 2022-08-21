@@ -19,10 +19,13 @@
 ###############################################################################
 
 export PYTHONPATH="."
-DATASET="x_nokc"
+DATASET="x_kc_014"
 EXPNAME="lr_baselines"
 NSPLITS=5
-BASELINE_ACC="0.843749"
+#BASELINE_ACC="0.843749"
+BASELINE_ACC="0.808993"
+#BASELINE_ACC="0.837111"
+#BASELINE_AUC="0.838766"
 BASELINE_AUC="0.5"
 
 

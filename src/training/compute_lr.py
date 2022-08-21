@@ -30,27 +30,61 @@ def train_func(X_train, y_train, X_test, y_test, args):
     start = time.perf_counter()
     y_pred_train = model.predict_proba(X_train)[:, 1]
     y_pred_test = model.predict_proba(X_test)[:, 1]
-    acc_train, auc_train, nll_train, mse_train, f1 = \
+
+    acc_train, auc_train, nll_train, mse_train, f1_train, \
+        fpr_train, tpr_train, J_best_i_train, roc_opt_threshold_train, gmean_train, \
+        pr_auc_train, cm_train, cm_roc_opt_train, cm_pr_opt_train, precision_train, recall_train, \
+        fscore_best_i_train, pr_opt_threshold_train = \
         compute_metrics(y_pred_train, y_train)
-    acc_test, auc_test, nll_test, mse_test, f1 = \
+
+    acc_test, auc_test, nll_test, mse_test, f1_test, \
+        fpr_test, tpr_test, J_best_i_test, roc_opt_threshold_test, gmean_test, \
+        pr_auc_test, cm_test, cm_roc_opt_test, cm_pr_opt_test, precision_test, recall_test, \
+        fscore_best_i_test, pr_opt_threshold_test = \
         compute_metrics(y_pred_test, y_test)
 
     metrics_train = {
         "acc": acc_train,
         "auc": auc_train,
+        "pr_auc": pr_auc_train,
         "nll": nll_train,
         "mse": mse_train,
         "rmse": np.sqrt(mse_train),
-        "f1": f1
+        "f1": f1_train,
+        "gmean": gmean_train,
+        "cm": cm_train.tolist(),
+        "cm_roc_opt": cm_roc_opt_train.tolist(),
+        "cm_pr_opt": cm_pr_opt_train.tolist(),
+        "roc_opt_t": roc_opt_threshold_train,
+        "pr_opt_t": pr_opt_threshold_train,
+        "J_best_i": int(J_best_i_train),
+        "fpr_curve": fpr_train.tolist(),
+        "tpr_curve": tpr_train.tolist(),
+        "fscore_best_i": int(fscore_best_i_train),
+        "precision_curve": precision_train.tolist(),
+        "recall_curve": recall_train.tolist()
     }
 
     metrics_test = {
         "acc": acc_test,
         "auc": auc_test,
+        "pr_auc": pr_auc_test,
         "nll": nll_test,
         "mse": mse_test,
         "rmse": np.sqrt(mse_test),
-        "f1": f1
+        "f1": f1_test,
+        "gmean": gmean_test,
+        "cm": cm_test.tolist(),
+        "cm_roc_opt": cm_roc_opt_test.tolist(),
+        "cm_pr_opt": cm_pr_opt_test.tolist(),
+        "roc_opt_t": roc_opt_threshold_test,
+        "pr_opt_t": pr_opt_threshold_test,
+        "J_best_i": int(J_best_i_test),
+        "fpr_curve": fpr_test.tolist(),
+        "tpr_curve": tpr_test.tolist(),
+        "fscore_best_i": int(fscore_best_i_test),
+        "precision_curve": precision_test.tolist(),
+        "recall_curve": recall_test.tolist()
     }
 
     now = time.perf_counter()
@@ -71,8 +105,8 @@ def store_results(met_train, met_test, features, spl_id, model, path):
         "features": features,
         "seed": SEED,
         "split_id": spl_id,
-        "metrics_train": met_train,
-        "metrics_test": met_test
+        "metrics_test": met_test,
+        "metrics_train": met_train
     }
     with open(res_path, "w") as f:
         json.dump(res_dict, f)
@@ -137,3 +171,4 @@ if __name__ == "__main__":
                   split_id, lr_model, res_path)
     print("\n----------------------------------------")
     print("Completed logistic regression")
+
